@@ -9,3 +9,7 @@ def register (request):
     return render(request,'register.html')
 def feedback(request):
     return render(request,'feedback.html')
+def cloth(request):
+    return render(request,'cloth.html')
+def rupees(request):
+    return render(request,'rupees.html')

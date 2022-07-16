@@ -1,0 +1,57 @@
+<html lang="en">
+    {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cloth</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href= {% static 'register.css' %}>
+    <style>
+      body{
+        background-color:#4dff88;
+      }
+       .box{
+        border:3px solid black;
+        padding: 15px;
+        border-radius:8px;
+        box-shadow:10px 15px #001a00;
+        background-color: #669999;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div class="box">
+        <center><h3>Fill other tummys!</h3></center>
+        <div class="form-group">
+            <label for="exampleInputName">Name</label>
+            <input type="text" class="form-control" id="exampleInputName1"  placeholder="Enter your Name">
+            <small id="NameHelp">*We are thank full for your contribution.</small>
+          </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+          <small id="emailHelp">*We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputmin_age"></label>
+          <input type="number" class="form-control" id="exampleInputmin_age" placeholder="Enter your min_age">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputmax_age"></label>
+            <input type="number" class="form-control" id="exampleInputmax_age" placeholder="Enter your max_age">
+          </div>
+        <div class="form-group form-check">
+          Gender: 
+          <input type="radio" id="html" name="fav_language" value="Male">
+          <label for="html">Male</label>
+          <input type="radio" id="css" name="fav_language" value="Female">
+          <label for="css">Female</label><br>
+        </div>
+        <div>
+        <center><button type="submit" class="btn btn-primary">Submit</button></center>
+        </div>
+      </div>
+      </form>
+  </body>
+</html>
