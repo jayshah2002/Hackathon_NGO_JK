@@ -1,0 +1,38 @@
+.img-wrapper {
+    margin: auto;
+    width: 700px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+.img-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -80px;
+    background-image: conic-gradient(#FF5B00 30deg, transparent 120deg);
+    animation: rotate 2s linear infinite;
+}
+.img-wrapper::after {
+    content: "";
+    position: absolute;
+    inset:6px;
+    background-image: url("ngo1.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;            
+}
+.text{
+    font-size: larger;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.a{
+    justify-content: center;
+    align-items: center;
+    margin-left: 45%;
+}
+@keyframes rotate {
+    to{
+        transform: rotate(-360deg);
+    }
+}
