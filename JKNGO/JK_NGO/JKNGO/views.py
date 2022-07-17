@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.shortcuts import render, redirect
@@ -7,6 +6,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.mail import EmailMessage, send_mail
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 def login(request):
      return render(request, 'login.html')
@@ -54,3 +54,30 @@ def plant(request):
     return render(request,'plant.html')
 def food(request):
     return render(request,'food.html')
+def Login(request):
+     if request.method == 'POST':
+        username = request.POST['username']
+        pass1 = request.POST['password']
+        
+        user = authenticate(username=username, password=pass1)
+        
+        if user is not None:
+           
+              login(request,user)
+              fname = user.username
+              superuser = user.is_superuser
+              firstname= user.first_name
+              context= {'fname' :fname,'superuser' :superuser,'firstname' : firstname}
+         
+            # messages.success(request, "Logged In Sucessfully!!")
+              return redirect('index')
+        else:
+            messages.error(request, "Bad Credentials!!")
+            return redirect('Login')
+    
+     return render(request, "login.html")   
+     
+def signout(request):
+    logout(request)
+    messages.success(request, "Logged Out Successfully!!")
+    return redirect('Login')
