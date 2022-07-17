@@ -13,3 +13,7 @@ def cloth(request):
     return render(request,'cloth.html')
 def rupees(request):
     return render(request,'rupees.html')
+def plant(request):
+    return render(request,'plant.html')
+def food(request):
+    return render(request,'food.html')
