@@ -2,10 +2,47 @@ from django.shortcuts import render
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.core.mail import EmailMessage, send_mail
 # Create your views here.
 def login(request):
      return render(request, 'login.html')
 def register (request):
+    if request.method == "GET":
+        return render(request,"register.html")
+    if request.method == "POST":
+        username = request.POST['userame']
+        email = request.POST['email']
+        pass1 = request.POST['password']
+        pass2 = request.POST['password2']
+        city=request.POST['city']
+        if User.objects.filter(username=username):
+            messages.error(request, "Username already exist! Please try some other username.")
+            return redirect('Login')
+        
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email Already Registered!!")
+            return redirect('Login')
+        
+        if len(username)>20:
+            messages.error(request, "Username must be under 20 charcters!!")
+            return redirect('Login')
+        
+        if pass1 != pass2:
+            messages.error(request, "Passwords didn't matched!!")
+            return redirect('Login')
+        
+        if not username.isalnum():
+            messages.error(request, "Username must be Alpha-Numeric!!")
+            return redirect('Login')
+        
+        myuser = User.objects.create_user(username,email,pass1)
+        myuser.save()
+        messages.success(request, "Your Account has been created succesfully!! Please check your email to confirm your email address in order to activate your account.")
+        return redirect('Login')
     return render(request,'register.html')
 def feedback(request):
     return render(request,'feedback.html')
